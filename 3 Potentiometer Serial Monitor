@@ -1,0 +1,27 @@
+void setup() {
+
+Serial.begin(9600); // begin serial communication
+
+}
+
+void loop() {
+
+int bitvalue = analogRead (A0); // read the voltage in bit value
+
+int voltage = (bitvalue/(1024/5));
+// this calculation will translate the bit value into voltage
+
+Serial.print("bit value = "); // print text in between "_"
+
+Serial.println(bitvalue); // print the bit value and skip a line
+
+Serial.print("voltage = "); // print text in between "_"
+
+Serial.print(voltage); // print the voltage value 
+  
+Serial.println("V"); // print voltage symbol and skip a line
+  
+Serial.println(); // skip an additional line for viewing purposes
+
+delay(1000); // one second delay between value reads
+}
