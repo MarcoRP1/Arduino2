@@ -5,7 +5,6 @@
 int red = A0; // associates pin A0 with the red pin on the RGB
 int blue = A1; // associates pin A1 with the blue pin on the RGB
 int green = A2; // associates pin A2 with the green pin on the RGB
-int readpin = A4 // associates pin A4 with the name readpin
 
 void setup() {
 
@@ -15,7 +14,7 @@ Serial.begin(9600); // begin serial communication
 
 void loop() {
 
-int bitvalue = analogRead (readpin); // read the bit value
+int bitvalue = analogRead (A4); // read the bit value
 
 int writevalue = (bitvalue/4); 
 // divide the read value by 4 to obtain an 8-bit value for analogWrite
@@ -26,3 +25,4 @@ analogWrite (blue, writevalue); // of the RGB pins in order to create the most
 analogWrite (green, writevalue); // color (white) or the least (black)
 
 }
+
