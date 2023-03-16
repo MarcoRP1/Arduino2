@@ -47,7 +47,7 @@ lcd.print(voltage); // will print the voltage value
 lcd.print("V        "); // voltage symbol and removes the blank squares
 }
 
-  if (Serial.available()) // when characters arrive over the serial port...
+  if (Serial.available()) // when characters arrive over the serial port
   {
     delay(100); // wait 0.1 seconds for the entire message to arrive
     lcd.clear(); // clear the screen
