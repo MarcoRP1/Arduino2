@@ -22,7 +22,7 @@ byte customChar[8] = {
 void setup() {
   
   lcd.begin(16, 2); // set up the LCD's number of columns and rows:
-  lcd.createChar(0, customChar); // initialize the serial communications:
+  lcd.createChar(0, customChar); // add the custom symbol as text
   Serial.begin(9600); // begin serial communication
 }
 
