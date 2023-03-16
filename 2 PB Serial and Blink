@@ -1,0 +1,32 @@
+// Declare the timer interval
+const unsigned long TIMER_INTERVAL = 1000;
+
+// Declare the timer variable
+unsigned long previousMillis = 0;
+
+void setup()
+{
+  pinMode(2, INPUT);
+  pinMode(8, OUTPUT);
+  Serial.begin(9600);
+  
+}
+
+void loop() {
+  
+  int PBVal = digitalRead(2); 
+
+  Serial.println(PBVal);
+  
+  unsigned long currentMillis = millis();
+
+  if (currentMillis - previousMillis >= TIMER_INTERVAL) 
+  // once
+  {
+    previousMillis = currentMillis;
+
+    // Toggle the LED state
+    digitalWrite(8, !digitalRead(8));
+    
+  }
+}
