@@ -1,3 +1,7 @@
+// The purpose of this exercise is to measure the voltage on the
+// analogRead in both bit value and voltage, then to display it on
+// the serial monitor
+
 void setup() {
 
 Serial.begin(9600); // begin serial communication
@@ -25,3 +29,4 @@ Serial.println(); // skip an additional line for viewing purposes
 
 delay(1000); // one second delay between value reads
 }
+
