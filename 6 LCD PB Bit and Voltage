@@ -25,27 +25,27 @@ int voltage = (bitvalue/(1024/5));
 
 int PBval = digitalRead(2); // read the digital push button value
 
-lcd.setCursor(0, 0); // set the starting point on the LCD
-
 if (PBval == 1) // if the PB is not pressed (1), do {}
 {
-lcd.print("bv = "); // short for "bit value equals"
+lcd.setCursor(0, 0); // set the starting point on the LCD
+
+lcd.print("Bit Value = "); // print text in between "_"
          
 lcd.print(bitvalue); // will print the bit value
 
-lcd.print(""); // removes the blank squares 
+lcd.print("   "); // removes the blank squares 
 }
 
 else // if the PB is pressed (0), do {}
 {
-lcd.print(" v = "); // short for "voltage equals"
+lcd.setCursor(0, 0); // set the starting point on the LCD
+
+lcd.print("Voltage = "); // print text in between "_"
 
 lcd.print(voltage); // will print the voltage value
   
 lcd.print("V        "); // voltage symbol and removes the blank squares
 }
-
-lcd.write((byte)0); // communication procedure for the LCD
 
   if (Serial.available()) // when characters arrive over the serial port...
   {
