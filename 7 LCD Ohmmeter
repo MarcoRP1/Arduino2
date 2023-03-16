@@ -45,7 +45,7 @@ lcd.print("R=   "); // will print the text in between "_"
 
 lcd.println(resistance); // will print the resistance value from the calculation
 
-lcd.write((byte)0); // communication procedure for the LCD
+lcd.write((byte)0); // prints the ohm symbol
 
   if (Serial.available()) // when characters arrive over the serial port...
   {
