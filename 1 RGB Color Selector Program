@@ -1,1 +1,16 @@
+// The purpose of this exercise is to associate a bit value with
+// each pin of the RGB in order to create a unique color (orange)
 
+int red = A0; // associates pin A0 with the red pin on the RGB
+int blue = A1; // associates pin A1 with the blue pin on the RGB
+int green = A2; // associates pin A2 with the green pin on the RGB
+
+void setup() {}
+
+void loop() {
+
+analogWrite (red, 255); // associates bit value 255 to the red pin
+analogWrite (blue, 153); // associates bit value 153 to the blue pin
+analogWrite (green, 51); // associates bit value 51 to the green pin
+
+}
