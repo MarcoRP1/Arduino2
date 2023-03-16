@@ -1,60 +1,59 @@
+// The purpose of this example was to create a working ohmmeter
+// and to use the LCD to display the correct value
 
+#include <LiquidCrystal.h> // include the LCD library
 
-// include the library code:
-#include <LiquidCrystal.h>
-
-// initialize the library by associating any needed LCD interface pin
-// with the arduino pin number it is connected to
 const int rs = 7, en = 8, d4 = 10, d5 = 11, d6 = 12, d7 = 13;
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+// initialize the library by associating any needed LCD interface pin
+// with the arduino pin number it is connected to
 
 byte customChar[8] = {
 	0b00000,
 	0b01110,
 	0b10001,
-	0b10001,
-	0b01010,
+	0b10001, // this combination will create the ohm symbol
+	0b01010, // on the LCD
 	0b11011,
 	0b00000,
 	0b00000
 };
 
 void setup() {
-  // set up the LCD's number of columns and rows:
-  lcd.begin(16, 2);
-  lcd.createChar(0, customChar);
-  // initialize the serial communications:
-  Serial.begin(9600);
+  
+  lcd.begin(16, 2); // set up the LCD's number of columns and rows:
+  lcd.createChar(0, customChar); // initialize the serial communications:
+  Serial.begin(9600); // begin serial communication
 }
 
 void loop() {
 
-float bitvalue = analogRead (A0);
+float bitvalue = analogRead (A0); // read the voltage in bit value
 
-float voltage1 = (bitvalue/(1024)*5);
+float voltage1 = (bitvalue/(1024)*5); 
+// this calculation will translate the bit value into voltage
 
 float voltage2 = (5-voltage1);
+// this calculation wil find the voltage across the unknown resistor
 
 float resistance = (voltage1*1000/voltage2);
+// this cross multiplication formula will determine the unknown resistance
 
-lcd.setCursor(0, 0);
+lcd.setCursor(0, 0); // set the starting point on the LCD
 
-lcd.print("R=   ");
+lcd.print("R=   "); // will print the text in between "_"
 
-lcd.print(resistance);
+lcd.println(resistance); // will print the resistance value from the calculation
 
-lcd.write((byte)0);
+lcd.write((byte)0); // communication procedure for the LCD
 
-  // when characters arrive over the serial port...
-  if (Serial.available()) {
-    // wait a bit for the entire message to arrive
-    delay(100);
-    // clear the screen
-    lcd.clear();
-    // read all the available characters
-    while (Serial.available() > 0) {
-      // display each character to the LCD
-      lcd.write(Serial.read());
+  if (Serial.available()) // when characters arrive over the serial port...
+  {
+    delay(100); // wait 0.1 seconds for the entire message to arrive
+    lcd.clear(); // clear the screen
+    while (Serial.available() > 0) // read all the available characters
+    { 
+    lcd.write(Serial.read()); // display each character to the LCD
     }
   }
 }
