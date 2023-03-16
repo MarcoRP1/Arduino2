@@ -1,0 +1,47 @@
+// The purpose of this example was to create a working ohmmeter
+// and to use the LCD to display the correct value
+
+#include <LiquidCrystal.h> // include the LCD library
+
+const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
+LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+// initialize the library by associating any needed LCD interface pin
+// with the arduino pin number it is connected to
+
+void setup() {
+  
+  lcd.begin(16, 2); // set up the LCD's number of columns and rows
+  Serial.begin(9600); // begin serial communication
+}
+
+void loop() {
+
+int bitvalue = analogRead (A0); // read the voltage in bit value
+
+int voltage = (bitvalue/(1024/5)); 
+// this calculation will translate the bit value into voltage
+
+lcd.setCursor(0, 0); // set the starting point on the LCD
+
+lcd.print("bv = "); // will print the text in between "_"
+
+lcd.print(bitvalue); // will print the resistance value from the calculation
+
+lcd.print(" v = ");
+
+lcd.print(voltage);
+  
+lcd.print("V     ");
+
+lcd.write((byte)0); // communication procedure for the LCD
+
+  if (Serial.available()) // when characters arrive over the serial port...
+  {
+    delay(100); // wait 0.1 seconds for the entire message to arrive
+    lcd.clear(); // clear the screen
+    while (Serial.available() > 0) // read all the available characters
+    { 
+    lcd.write(Serial.read()); // display each character to the LCD
+    }
+  }
+}
