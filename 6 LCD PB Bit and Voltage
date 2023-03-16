@@ -11,7 +11,7 @@ LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
 void setup() {
   
-  pinMode(6, INPUT); // pin 6 becomes an input
+  pinMode(2, INPUT); // pin 2 becomes an input
   lcd.begin(16, 2); // set up the LCD's number of columns and rows
   Serial.begin(9600); // begin serial communication
 }
@@ -23,7 +23,7 @@ int bitvalue = analogRead (A0); // read the voltage in bit value
 int voltage = (bitvalue/(1024/5));
 // this calculation will translate the bit value into voltage
 
-int PBval = digitalRead(6); // read the digital push button value
+int PBval = digitalRead(2); // read the digital push button value
 
 lcd.setCursor(0, 0); // set the starting point on the LCD
 
