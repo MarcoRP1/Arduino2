@@ -3,7 +3,7 @@
 
 #include <LiquidCrystal.h> // include the LCD library
 
-const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
+const int rs = 7, en = 8, d4 = 10, d5 = 11, d6 = 12, d7 = 13;
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 // initialize the library by associating any needed LCD interface pin
 // with the arduino pin number it is connected to
@@ -18,20 +18,20 @@ void loop() {
 
 int bitvalue = analogRead (A0); // read the voltage in bit value
 
-int voltage = (bitvalue/(1024/5)); 
+int voltage = (bitvalue/(1024/5));
 // this calculation will translate the bit value into voltage
 
 lcd.setCursor(0, 0); // set the starting point on the LCD
 
-lcd.print("bv = "); // will print the text in between "_"
+lcd.print("bv = "); // short for "bit value equals"
 
-lcd.print(bitvalue); // will print the resistance value from the calculation
+lcd.print(bitvalue); // will print the bit value
 
-lcd.print(" v = ");
+lcd.print(" v = "); // short for "voltage equals"
 
-lcd.print(voltage);
+lcd.print(voltage); // will print the voltage value
   
-lcd.print("V     ");
+lcd.print("V     "); // voltage symbol
 
 lcd.write((byte)0); // communication procedure for the LCD
 
