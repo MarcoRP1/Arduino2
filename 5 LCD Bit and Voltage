@@ -1,5 +1,5 @@
-// The purpose of this example was to create a working ohmmeter
-// and to use the LCD to display the correct value
+// The purpose of this exercise was to display the bit value and
+// voltage at the same time on the LCD
 
 #include <LiquidCrystal.h> // include the LCD library
 
