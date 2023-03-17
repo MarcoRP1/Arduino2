@@ -1,32 +1,35 @@
-// Declare the timer interval
-const unsigned long TIMER_INTERVAL = 1000;
+// The purpose of this exercise is to activate a 
+// blinker light at the same time as a serial monitor
+// is printing the digital values of a pull up PB
+// This is done using the Millis() feature
 
-// Declare the timer variable
+const unsigned long TIMER_INTERVAL = 1000;
+// timer for the light to blink
+
 unsigned long previousMillis = 0;
+// this is the first "previousMillis" count
 
 void setup()
 {
-  pinMode(2, INPUT);
-  pinMode(8, OUTPUT);
-  Serial.begin(9600);
-  
+  pinMode(2, INPUT); // PB pin becomes an input
+  pinMode(8, OUTPUT); // the blinker pin becomes an output
+  Serial.begin(9600); // establish a serial communication
 }
 
 void loop() {
   
-  int PBVal = digitalRead(2); 
+  int PBVal = digitalRead(2); // read value of pin 2 (1 or 0)
+  Serial.println(!PBVal); // prints inverse value (pull-up)
 
-  Serial.println(PBVal);
-  
-  unsigned long currentMillis = millis();
+  unsigned long currentMillis = millis(); 
 
   if (currentMillis - previousMillis >= TIMER_INTERVAL) 
-  // once
+  // once current - previous is larger than the interval
   {
     previousMillis = currentMillis;
+    // the current value becomes the new previous value
 
-    // Toggle the LED state
-    digitalWrite(8, !digitalRead(8));
-    
+    digitalWrite(8, !digitalRead(8)); 
+    // the blinker pin will take the opposite value of what it was
   }
 }
